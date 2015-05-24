@@ -205,6 +205,7 @@ thread_create (const char *name, int priority,
   sf->ebp = 0;
 
   intr_set_level (old_level);
+  t->ticks_blocked = 0;
 
   /* Add to run queue. */
   thread_unblock (t);
@@ -219,7 +220,7 @@ thread_create (const char *name, int priority,
    is usually a better idea to use one of the synchronization
    primitives in synch.h. */
 void
-thread_block (void) 
+thread_block (void)
 {
   ASSERT (!intr_context ());
   ASSERT (intr_get_level () == INTR_OFF);
@@ -585,3 +586,17 @@ allocate_tid (void)
 /* Offset of `stack' member within `struct thread'.
    Used by switch.S, which can't figure it out on its own. */
 uint32_t thread_stack_ofs = offsetof (struct thread, stack);
+
+/* Check the blocked thread */
+void
+blocked_thread_check (struct thread *t, void *aux UNUSED)
+{
+  if (t->status == THREAD_BLOCKED && t->ticks_blocked > 0)
+  {
+      t->ticks_blocked--;
+      if (t->ticks_blocked == 0)
+      {
+          thread_unblock(t);
+      }
+  }
+}
