@@ -1,0 +1,21 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+DEPENDS	Makefile	/^DEPENDS = $(patsubst %.o,%.d,$(OBJECTS))$/;"	m
+OBJECTS	Makefile	/^OBJECTS = $(patsubst %.c,%.o,$(patsubst %.S,%.o,$(SOURCES)))$/;"	m
+SOURCES	Makefile	/^SOURCES = $(foreach dir,$(KERNEL_SUBDIRS),$($(dir)_SRC))$/;"	m
+SRCDIR	Makefile	/^SRCDIR = ..\/..$/;"	m
+_end	threads/kernel.lds.s	/^  _end = .;$/;"	d
+_end_bss	threads/kernel.lds.s	/^  _end_bss = .;$/;"	d
+_end_kernel_text	threads/kernel.lds.s	/^       _end_kernel_text = .; }$/;"	d
+_start	threads/kernel.lds.s	/^  _start = .;$/;"	d
+_start_bss	threads/kernel.lds.s	/^  _start_bss = .;$/;"	d
+devices_SRC	Makefile	/^devices_SRC  = devices\/timer.c		# Timer device.$/;"	m
+filesys_SRC	Makefile	/^filesys_SRC  = filesys\/filesys.c	# Filesystem core.$/;"	m
+kernel_SRC	Makefile	/^lib\/kernel_SRC  = lib\/kernel\/debug.c	# Debug helpers.$/;"	m
+lib_SRC	Makefile	/^lib_SRC  = lib\/debug.c			# Debug helpers.$/;"	m
+threads_SRC	Makefile	/^threads_SRC  = threads\/init.c		# Main program.$/;"	m
+userprog_SRC	Makefile	/^userprog_SRC  = userprog\/process.c	# Process loading.$/;"	m
